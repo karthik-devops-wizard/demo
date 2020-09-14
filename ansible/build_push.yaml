@@ -1,0 +1,23 @@
+---
+- hosts: all
+  become: yes 
+
+  tasks:
+  - name: create build directory 
+    file: state=directory path=/home/ubunut/docker 
+  - name: download sources
+    get_url: url=https://releases.wikimedia.org/mediawiki/1.34/mediawiki-1.34.2.tar.gz dest=/home/ubunut/docker 
+
+  - name: Build Docker
+    command: docker build -t myhttd .
+    args:
+      chdir: /home/ubunut/docker
+
+  - name: create tag to image
+    command: docker tag myhttd karthikdevopscloud1984/httpd
+
+  - name: push image on to dockerhub
+    command: docker push karthikdevopscloud1984/httpd
+
+
+     
