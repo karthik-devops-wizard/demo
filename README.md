@@ -21,3 +21,7 @@ yum -y install jenkins
 ## Create post build actions to run the below script using jenkins
 4) Run postk8s.sh
 
+Mediawiki can be accessed from the External IP configured for ingress.. 
+
+http://23.100.17.10/mediawiki
+
